@@ -30,7 +30,6 @@ from AnonX.utils.formatters import seconds_to_min
 from AnonX.utils.inline.play import panel_markup_1, stream_markup, telegram_markup
 from AnonX.utils.stream.autoclear import auto_clean
 from AnonX.utils.thumbnails import gen_thumb
-from AnonX.utils.theme import check_theme
 
 wrong = {}
 
