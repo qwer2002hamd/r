@@ -29,7 +29,7 @@ from AnonX.utils.decorators.language import languageCB
 from AnonX.utils.formatters import seconds_to_min
 from AnonX.utils.inline import (
     stream_markup,
-    panel_markup_1
+    panel_markup_1,
     stream_markup_timer,
     telegram_markup,
     telegram_markup_timer,
