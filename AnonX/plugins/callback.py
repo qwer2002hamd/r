@@ -27,7 +27,7 @@ from AnonX.utils.database import (
 )
 from AnonX.utils.decorators.language import languageCB
 from AnonX.utils.formatters import seconds_to_min
-from AnonX.utils.inline.play import panel_markup_1, stream_markup, telegram_markup
+from AnonX.utils.inline.play import panel_markup_1, stream_markup, stream_markup_timer
 from AnonX.utils.stream.autoclear import auto_clean
 from AnonX.utils.thumbnails import gen_thumb
 from AnonX.utils.theme import check_theme
@@ -65,7 +65,7 @@ async def del_back_playlist(client, CallbackQuery, _):
     if videoid == str(None):
         buttons = telegram_markup(_, chat_id)
     else:
-        buttons = stream_markup(_, videoid, chat_id)
+        buttons = stream_markup_timer(_, videoid, chat_id)
     chat_id = CallbackQuery.message.chat.id
     try:
         await CallbackQuery.edit_message_reply_markup(
