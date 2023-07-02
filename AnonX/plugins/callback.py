@@ -1,20 +1,19 @@
+import os
 import random
+import asyncio
 
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
 
-from config import (
-    AUTO_DOWNLOADS_CLEAR,
-    BANNED_USERS,
-    SOUNCLOUD_IMG_URL,
-    STREAM_IMG_URL,
-    TELEGRAM_AUDIO_URL,
-    TELEGRAM_VIDEO_URL,
-    adminlist,
-)
+from strings import get_string
+from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS,
+                    SOUNCLOUD_IMG_URL, STREAM_IMG_URL,
+                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL,
+                    MUSIC_BOT_NAME, adminlist)
 from AnonX import YouTube, app
 from AnonX.core.call import Anon
 from AnonX.misc import SUDOERS, db
+from AnonX.utils import bot_sys_stats
 from AnonX.utils.database import (
     get_active_chats,
     get_lang,
