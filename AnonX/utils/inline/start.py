@@ -1,7 +1,7 @@
 from typing import Union
 
 from pyrogram.types import InlineKeyboardButton
-from AlexaMusic import app
+from AnonX import app
 
 
 
