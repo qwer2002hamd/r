@@ -448,7 +448,7 @@ async def markup_timer():
                     _ = get_string("en")
                 try:
                     buttons = (
-                        stream_markup_timer(
+                        panel_markup_1(
                             _,
                             playing[0]["vidid"],
                             chat_id,
