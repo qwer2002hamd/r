@@ -440,4 +440,3 @@ async def markup_timer():
                 continue
 
 
-asyncio.create_task(markup_timer())
