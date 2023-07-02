@@ -5,17 +5,17 @@
 
 
 import random
-from AlexaMusic.utils.database import get_theme
+from AnonX.utils.database import get_theme
 
 themes = [
-    "alexa1",
-    "alexa2",
-    "alexa3",
-    "alexa4",
-    "alexa5",
-    "alexa6",
-    "alexa7",
-    "alexa8",
+    "anon1",
+    "anon2",
+    "anon3",
+    "anon4",
+    "anon5",
+    "anon6",
+    "anon7",
+    "anon8",
 ]
 
 
