@@ -29,6 +29,7 @@ from AnonX.utils.formatters import seconds_to_min
 from AnonX.utils.inline import (
     stream_markup,
     stream_markup_timer,
+    panel_markup_1,
     telegram_markup,
     telegram_markup_timer,
     close_keyboard,
