@@ -1,44 +1,40 @@
-import os
 import random
-import asyncio
 
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
 
-from strings import get_string
-from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS,
-                    SOUNCLOUD_IMG_URL, STREAM_IMG_URL,
-                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL,
-                    MUSIC_BOT_NAME, adminlist)
+from config import (
+    AUTO_DOWNLOADS_CLEAR,
+    BANNED_USERS,
+    SOUNCLOUD_IMG_URL,
+    STREAM_IMG_URL,
+    TELEGRAM_AUDIO_URL,
+    TELEGRAM_VIDEO_URL,
+    adminlist,
+)
 from AnonX import YouTube, app
 from AnonX.core.call import Anon
 from AnonX.misc import SUDOERS, db
-from AnonX.utils import bot_sys_stats
 from AnonX.utils.database import (
-    get_active_chats,
-    get_lang,
     is_active_chat,
     is_music_playing,
+    is_muted,
     is_nonadmin_chat,
     music_off,
     music_on,
+    mute_off,
+    mute_on,
     set_loop,
 )
 from AnonX.utils.decorators.language import languageCB
 from AnonX.utils.formatters import seconds_to_min
-from AnonX.utils.inline import (
-    stream_markup,
-    panel_markup_1,
-    stream_markup_timer,
-    telegram_markup,
-    telegram_markup_timer,
-    close_keyboard,
-)
+from AnonX.utils.inline.play import panel_markup_1, stream_markup, telegram_markup
 from AnonX.utils.stream.autoclear import auto_clean
 from AnonX.utils.thumbnails import gen_thumb
+from AnonX.utils.theme import check_theme
 
 wrong = {}
-checker = {} 
+
 
 @app.on_callback_query(filters.regex("PanelMarkup") & ~BANNED_USERS)
 @languageCB
@@ -82,29 +78,8 @@ async def del_back_playlist(client, CallbackQuery, _):
         checker[chat_id] = {}
     checker[chat_id][CallbackQuery.message.message_id] = True
 
-
-@app.on_callback_query(filters.regex("unban_assistant"))
-async def unban_assistant_(_, CallbackQuery):
-    callback_data = CallbackQuery.data.strip()
-    callback_request = callback_data.split(None, 1)[1]
-    chat_id, user_id = callback_request.split("|")
-    a = await app.get_chat_member(int(chat_id), app.id)
-    if not a.can_restrict_members:
-        return await CallbackQuery.answer(
-            "ɪ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴜɴʙᴀɴ ᴜsᴇʀs ɪɴ ᴛʜɪs ᴄʜᴀᴛ.",
-            show_alert=True,
-        )
-    else:
-        try:
-            await app.unban_chat_member(int(chat_id), int(user_id))
-        except:
-            return await CallbackQuery.answer(
-                "ғᴀɪʟᴇᴅ ᴛᴏ ᴜɴʙᴀɴ ᴛʜᴇ ᴀssɪsᴛᴀɴᴛ ᴀᴄᴄᴏᴜɴᴛ.",
-                show_alert=True,
-            )
-        return await CallbackQuery.edit_message_text(
-            "ᴀssɪsᴛᴀɴᴛ ᴀᴄᴄᴏᴜɴᴛ ᴜɴʙᴀɴɴᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ.\n\nᴛʀʏ ᴘʟᴀʏɪɴɢ ɴᴏᴡ..."
-        )
+downvote = {}
+downvoters = {}
 
 
 @app.on_callback_query(filters.regex("ADMIN") & ~BANNED_USERS)
