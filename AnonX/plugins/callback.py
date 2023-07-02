@@ -26,7 +26,7 @@ from AnonX.utils.database import (
 )
 from AnonX.utils.decorators.language import languageCB
 from AnonX.utils.formatters import seconds_to_min
-from AlexaMusic.utils.inline.play import panel_markup_1, stream_markup, stream_markup_timer
+from AnonX.utils.inline.play import panel_markup_1, stream_markup, stream_markup_timer
 from AnonX.utils.stream.autoclear import auto_clean
 from AnonX.utils.thumbnails import gen_thumb
 
