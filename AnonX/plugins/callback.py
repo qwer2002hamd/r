@@ -68,7 +68,7 @@ async def del_back_playlist(client, CallbackQuery, _):
     callback_request = callback_data.split(None, 1)[1]
     videoid, chat_id = callback_request.split("|")
     if videoid == str(None):
-        buttons = panel_markup_1(_, videoid, chat_id)
+        buttons = stream_markup(_, videoid, chat_id)
     else:
         buttons = panel_markup_1(_, videoid, chat_id)
     chat_id = CallbackQuery.message.chat.id
