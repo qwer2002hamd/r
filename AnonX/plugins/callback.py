@@ -31,6 +31,8 @@ from AnonX.utils.inline import (
     panel_markup_1,
     stream_markup_timer,
     telegram_markup,
+    telegram_markup_timer,
+    close_keyboard,
 )
 from AnonX.utils.stream.autoclear import auto_clean
 from AnonX.utils.thumbnails import gen_thumb
