@@ -1,9 +1,10 @@
+import math
+
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from config import SUPPORT_GROUP, SUPPORT_CHANNEL
-import random
 
 import config
 from AnonX.utils.formatters import time_to_seconds
+
 
 ## After Edits with Timer Bar
 
